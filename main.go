@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/scyanh/educative/recursion"
+	"github.com/scyanh/educative/datastructures"
 )
 
 func main() {
-	//arr := []int{3, 2, 1, 5, 7, 2}
+	arr := []int{1, 2, 5, 6}
+	arr2 := []int{3, 4}
 
-	res := recursion.NewRecursionPower().Power(2, 6)
+	res := datastructures.NewListChallenge().MergeTwoSortedList(arr, arr2)
 	fmt.Println("res=", res)
 }
