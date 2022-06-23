@@ -22,3 +22,13 @@ func TestListChallenge_MergeTwoSortedList(t *testing.T) {
 	res := NewListChallenge().MergeTwoSortedList(arr, arr2)
 	require.Equal(t, expected, res)
 }
+
+func TestListChallenge_AddTwoNumbersAddToK(t *testing.T) {
+	arr := []int{1, 2, 3, 4}
+	k := 6
+
+	n1, n2, err := NewListChallenge().AddTwoNumbersAddToK(arr, k)
+	require.NoError(t, err)
+	require.Equal(t, 4, n1)
+	require.Equal(t, 2, n2)
+}

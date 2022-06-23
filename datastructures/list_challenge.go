@@ -1,5 +1,7 @@
 package datastructures
 
+import "errors"
+
 type listChallenge struct {
 }
 
@@ -35,4 +37,20 @@ func (listChallenge) MergeTwoSortedList(arr1, arr2 []int) []int {
 	}
 
 	return res
+}
+
+// AddTwoNumbersAddToK In this problem, you have to implement the find_sum(lst,k) function
+// which will take a number k as input and return two numbers that add up to k.
+func (listChallenge) AddTwoNumbersAddToK(arr []int, k int) (int, int, error) {
+	memo := make(map[int]bool)
+
+	for _, el := range arr {
+		_, ok := memo[k-el]
+		if ok {
+			return el, k - el, nil
+		}
+		memo[el] = true
+	}
+
+	return 0, 0, errors.New("not found")
 }
