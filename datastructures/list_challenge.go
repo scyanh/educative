@@ -54,3 +54,35 @@ func (listChallenge) AddTwoNumbersAddToK(arr []int, k int) (int, int, error) {
 
 	return 0, 0, errors.New("not found")
 }
+
+// FindProductAllElements List of Products of all Elements
+/*
+Sample Input [1,2,3,4]
+output = [24,12,8,6]
+1=     2 * 3 * 4
+2= 1     * 3 * 4
+3= 1 * 2     * 4 // i=2
+4= 1 * 2 * 3
+
+Sample Input [0, 1, 2, 3]
+output [6, 0, 0, 0]
+*/
+func (listChallenge) FindProductAllElements(arr []int) []int {
+	res := make([]int, len(arr))
+
+	// get product start from left
+	left := 1
+	for i, el := range arr {
+		res[i] = left
+		left = left * el
+	}
+
+	// get product starting from right
+	right := 1
+	for i := len(arr) - 1; i >= 0; i-- {
+		res[i] = res[i] * right
+		right = right * arr[i]
+	}
+
+	return res
+}
