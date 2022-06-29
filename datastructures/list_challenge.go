@@ -115,3 +115,16 @@ func (listChallenge) FindSecondMaximum(arr []int) int {
 
 	return secondMax
 }
+
+// RotateToRightK rotate to right a list by k elements
+/*
+Sample Input [1,2,3,4] k=1
+output = [4,1,2,3]
+ */
+func (listChallenge) RotateToRightK(arr []int, k int) []int {
+	for i := 0; i < k; i++ {
+		arr = append(arr[len(arr)-1:], arr[:len(arr)-1]...)
+	}
+
+	return arr
+}
