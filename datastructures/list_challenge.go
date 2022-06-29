@@ -86,3 +86,32 @@ func (listChallenge) FindProductAllElements(arr []int) []int {
 
 	return res
 }
+
+//FindMinimum finds the smallest number in the given list.
+func (listChallenge) FindMinimum(arr []int) int {
+	min := arr[0]
+	for _, el := range arr {
+		if el < min {
+			min = el
+		}
+	}
+
+	return min
+}
+
+// FindSecondMaximum returns the second largest element in the list.
+func (listChallenge) FindSecondMaximum(arr []int) int {
+	max := arr[0]
+	secondMax := arr[0]
+
+	for _, el := range arr {
+		if el > max {
+			secondMax = max
+			max = el
+		} else if el > secondMax {
+			secondMax = el
+		}
+	}
+
+	return secondMax
+}
