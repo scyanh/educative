@@ -6,10 +6,9 @@ import (
 )
 
 func main() {
-	//arr := []int{1, 2, 3, 4}
-	arr := []int{0, 1, 2, 3}
+	arr := []int{1, -2, -3, 4}
 
-	res := datastructures.NewListChallenge().RotateToRightK(arr, 1)
+	res := datastructures.NewListChallenge().RearrangeArray(arr)
 	fmt.Println("res=", res)
 
 

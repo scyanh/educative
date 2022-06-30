@@ -1,6 +1,8 @@
 package datastructures
 
-import "errors"
+import (
+	"errors"
+)
 
 type listChallenge struct {
 }
@@ -120,11 +122,42 @@ func (listChallenge) FindSecondMaximum(arr []int) int {
 /*
 Sample Input [1,2,3,4] k=1
 output = [4,1,2,3]
- */
+*/
 func (listChallenge) RotateToRightK(arr []int, k int) []int {
 	for i := 0; i < k; i++ {
 		arr = append(arr[len(arr)-1:], arr[:len(arr)-1]...)
 	}
 
 	return arr
+}
+
+// RotateToLeftK rotate to left a list by k elements
+/*
+Sample Input [1,2,3,4] k=1
+output = [2,3,4,1]
+*/
+func (listChallenge) RotateToLeftK(arr []int, k int) []int {
+	for i := 0; i < k; i++ {
+		arr = append(arr[1:], arr[0])
+	}
+
+	return arr
+}
+
+// RearrangeArray write a function that takes an array and put the negative elements in the back and positive elements in the front
+/*
+Sample Input [1,-2,3,4]
+output = [-2,4,1,3]
+*/
+func (listChallenge) RearrangeArray(arr []int) []int {
+	res := make([]int, 0)
+	for _, el := range arr {
+		if el < 0 {
+			res = append(res, el)
+		} else {
+			res = append([]int{el}, res...)
+		}
+	}
+
+	return res
 }
