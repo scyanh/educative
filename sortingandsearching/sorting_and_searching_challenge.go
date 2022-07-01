@@ -1,5 +1,10 @@
 package sortingandsearching
 
+import (
+	"sort"
+	"strings"
+)
+
 type sasc struct {
 }
 
@@ -99,4 +104,38 @@ func (sasc) BinarySearch(arr []int, num int) int {
 	}
 
 	return -1
+}
+
+// GroupAnagrams given an array of strings returns groups of anagrams
+// Time complexity: O(n)
+// Space complexity: O(n)
+/*
+sample input:["abc", "bca", "cab", "cba", "xyz", "yzx"]
+output:[[abc, bca, cab, cba], [xyz, yzx]]
+ */
+func (s sasc) GroupAnagrams(arr []string) [][]string {
+	if len(arr) == 0 {
+		return nil
+	}
+
+	memo := make(map[string][]string)
+
+	for _, el := range arr {
+		key := s.sortString(el)
+		memo[key] = append(memo[key], el)
+	}
+
+	res := make([][]string, 0)
+
+	for _, el := range memo {
+		res = append(res, el)
+	}
+
+	return res
+}
+
+func (sasc) sortString(str string) string {
+	s := strings.Split(str, "")
+	sort.Strings(s)
+	return strings.Join(s, "")
 }
