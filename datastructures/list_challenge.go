@@ -144,7 +144,7 @@ func (listChallenge) RotateToLeftK(arr []int, k int) []int {
 	return arr
 }
 
-// RearrangeArray write a function that takes an array and put the negative elements in the back and positive elements in the front
+// RearrangeArray takes an array and put the negative elements in the back and positive elements in the front
 /*
 Sample Input [1,-2,3,4]
 output = [-2,4,1,3]
@@ -157,6 +157,34 @@ func (listChallenge) RearrangeArray(arr []int) []int {
 		} else {
 			res = append([]int{el}, res...)
 		}
+	}
+
+	return res
+}
+
+// ArrangeMaxMinElements arrange elements in such a way that the maximum element appears at first position,
+//then minimum at second, then second maximum at third and second minimum at fourth and so on.
+/*
+Sample Input [1,2,3,4,5]
+output = [5,1,4,2,3]
+*/
+func (listChallenge) ArrangeMaxMinElements(arr []int) []int {
+	if len(arr) == 0 {
+		return arr
+	}
+
+	res := make([]int, 0)
+	minIdx := 0
+	maxIdx := len(arr) - 1
+	for len(res) != len(arr) {
+		res = append(res, arr[maxIdx])
+		if len(res) == len(arr) {
+			break
+		}
+		maxIdx--
+
+		res = append(res, arr[minIdx])
+		minIdx++
 	}
 
 	return res

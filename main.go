@@ -6,10 +6,9 @@ import (
 )
 
 func main() {
-	arr := []int{1, -2, -3, 4}
+	arr := []int{1, 2, 3, 4, 5}
 
-	res := datastructures.NewListChallenge().RearrangeArray(arr)
+	res := datastructures.NewListChallenge().ArrangeMaxMinElements(arr)
 	fmt.Println("res=", res)
-
 
 }
