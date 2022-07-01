@@ -7,9 +7,9 @@ import (
 
 func main() {
 	//arr := []int{1, 2, 3, 4, 5}
-	arr := []int{1, 21, 3, 14, 5, 60, 7, 6}
+	arr := []int{7, 8, 9, 10, 11, 12, 13, 14, 0, 3, 5, 6}
 
-	n1, n2 := sortingandsearching.NewSASC().FindTwoNumbersAddToK(arr, 81)
-	fmt.Println("res=", n1, n2)
+	pivot := sortingandsearching.NewSASC().FindPivotIndex(arr)
+	fmt.Println("res=", pivot)
 
 }
