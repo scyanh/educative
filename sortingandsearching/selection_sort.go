@@ -1,4 +1,4 @@
-package selectionsort
+package sortingandsearching
 
 type selectionSort struct {
 }

@@ -1,15 +1,15 @@
-package insertionsort
+package sortingandsearching
 
 import (
 	"github.com/stretchr/testify/require"
 	"testing"
 )
 
-func TestInsertionSort_Sort(t *testing.T) {
+func TestSelectionSort_Sort(t *testing.T) {
 	arr := []int{3, 2, 1}
 	expected := []int{1, 2, 3}
 
-	arr = NewInsertionSort().Sort(arr)
+	arr = NewSelectionSort().Sort(arr)
 
 	require.Equal(t, expected, arr)
 }

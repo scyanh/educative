@@ -1,4 +1,4 @@
-package insertionsort
+package sortingandsearching
 
 type insertionSort struct {
 }

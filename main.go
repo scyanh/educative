@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/scyanh/educative/datastructures"
+	"github.com/scyanh/educative/sortingandsearching"
 )
 
 func main() {
 	//arr := []int{1, 2, 3, 4, 5}
-	arr := []int{-2,10,7,-5, 15,6}
+	arr := []int{1, 21, 3, 14, 5, 60, 7, 6}
 
-	res, sum := datastructures.NewListChallenge().FindMaxSumSublist(arr)
-	fmt.Println("res=", res, sum)
+	n1, n2 := sortingandsearching.NewSASC().FindTwoNumbersAddToK(arr, 81)
+	fmt.Println("res=", n1, n2)
 
 }
