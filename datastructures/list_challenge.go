@@ -152,7 +152,7 @@ output = [-2,4,1,3]
 func (listChallenge) RearrangeArray(arr []int) []int {
 	res := make([]int, 0)
 	for _, el := range arr {
-		if el < 0 {
+		if el >= 0 {
 			res = append(res, el)
 		} else {
 			res = append([]int{el}, res...)
