@@ -189,3 +189,32 @@ func (listChallenge) ArrangeMaxMinElements(arr []int) []int {
 
 	return res
 }
+
+// FindMaxSumSublist finds the maximum sum of a sublist in a given list.
+/*
+Sample Input [-2,10,7,-5, 15,6]
+output =  [10 7 -5 15 6] 33
+*/
+func (listChallenge) FindMaxSumSublist(arr []int) ([]int, int) {
+	maxSum := arr[0]
+	currSum := arr[0]
+
+	sublist := make([]int, 0)
+	maxSublist := make([]int, 0)
+	for _, el := range arr {
+		if currSum+el > el {
+			currSum += el
+			sublist = append(sublist, el)
+		} else {
+			currSum = el
+			sublist = []int{el}
+		}
+
+		if currSum > maxSum {
+			maxSum = currSum
+			maxSublist = sublist
+		}
+	}
+
+	return maxSublist, maxSum
+}
