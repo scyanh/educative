@@ -23,6 +23,10 @@ func (sasc) FindTwoNumbersAddToK(arr []int, k int) (int, int) {
 }
 
 // FindPivotIndex finds pivot index in a rotated array sorted
+/*
+sample input:[7, 8, 9, 10, 11, 12, 13, 14, 0, 3, 5, 6]
+output:8
+*/
 func (sasc) FindPivotIndex(arr []int) int {
 	if len(arr) == 0 {
 		return -1
@@ -50,11 +54,49 @@ func (sasc) FindPivotIndex(arr []int) int {
 		}
 
 		if arr[mid] > arr[0] {
-			left = mid
+			left = mid + 1
 		} else {
-			right = mid
+			right = mid - 1
 		}
 	}
 
 	return 0
+}
+
+// BinarySearch search number in a sorted array using binary search
+// Time complexity: O(log(n))
+// Space complexity: O(1)
+/*
+sample input:[1, 2, 3, 4, 5] 4
+output:3
+ */
+func (sasc) BinarySearch(arr []int, num int) int {
+	if len(arr) == 0 {
+		return -1
+	}
+
+	if len(arr) == 1 {
+		if arr[0] == num {
+			return 0
+		}
+		return -1
+	}
+
+	left, right := 0, len(arr)-1
+
+	for left <= right {
+		mid := (left + right) / 2
+
+		if arr[mid] == num {
+			return mid
+		}
+
+		if arr[mid] < num {
+			left = mid + 1
+		} else {
+			right = mid - 1
+		}
+	}
+
+	return -1
 }

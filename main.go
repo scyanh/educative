@@ -6,10 +6,10 @@ import (
 )
 
 func main() {
-	//arr := []int{1, 2, 3, 4, 5}
-	arr := []int{7, 8, 9, 10, 11, 12, 13, 14, 0, 3, 5, 6}
+	arr := []int{1, 2, 3, 4, 5}
+	//arr := []int{7, 8, 9, 10, 11, 12, 13, 14, 0, 3, 5, 6}
 
-	pivot := sortingandsearching.NewSASC().FindPivotIndex(arr)
-	fmt.Println("res=", pivot)
+	idx := sortingandsearching.NewSASC().BinarySearch(arr, 4)
+	fmt.Println("res=", idx)
 
 }
