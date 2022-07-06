@@ -2,15 +2,23 @@ package main
 
 import (
 	"fmt"
-	"github.com/scyanh/educative/sortingandsearching"
+	"github.com/scyanh/educative/slidingwindow"
 )
 
 func main() {
 	//arr := []int{1, 2, 3, 4, 5}
 	//arr := []int{7, 8, 9, 10, 11, 12, 13, 14, 0, 3, 5, 6}
 
-	arr:=[]string{"abc", "bca", "cab", "cba", "xyz", "yzx"}
-	groups := sortingandsearching.NewSASC().GroupAnagrams(arr)
-	fmt.Println("res=", groups)
+	//arr:=[]string{"abc", "bca", "cab", "cba", "xyz", "yzx"}
+
+	//str:="00110011"
+	//str:="clementisacap"
+	//input := []int{2, 3, 1, 2, 4, 3}
+	//input:=[]string{"A","B","C","A","C"}
+	//k := 2
+	input := "abccdefgh"
+
+	res := slidingwindow.NewSlidingWindowChallenge().LongestSubstringWithDistinctCharacters(input)
+	fmt.Println("res=", res)
 
 }
