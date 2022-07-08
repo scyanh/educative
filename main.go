@@ -16,7 +16,7 @@ func main() {
 	//input := []int{2, 3, 1, 2, 4, 3}
 	//input:=[]string{"A","B","C","A","C"}
 	//k := 2
-	input := "abccdefgh"
+	input := "aabccbbaab"
 
 	res := slidingwindow.NewSlidingWindowChallenge().LongestSubstringWithDistinctCharacters(input)
 	fmt.Println("res=", res)
