@@ -17,11 +17,7 @@ func (slidingWindowChallenge) MaxFruitsIntoBasket(fruits []string) int {
 	var m = make(map[string]int)
 
 	for i, el := range fruits {
-		if m[el] > 0 {
-			m[el]++
-		} else {
-			m[el] = 1
-		}
+		m[el]++
 
 		for len(m) > 2 {
 			m[fruits[left]]--
