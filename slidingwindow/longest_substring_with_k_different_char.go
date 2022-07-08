@@ -5,7 +5,7 @@ package slidingwindow
 // Input: s = "araaci", k = 2
 // Output: 4
 // Time Complexity: O(n+n) = O(n)
-// Space Complexity: O(k) = O(n)
+// Space Complexity: O(k) = O(1)
 func (slidingWindowChallenge) LongestSubstringWithKDistinctCharacters(s string, k int) int {
 	n := len(s) // length of string
 	if n == 0 {
