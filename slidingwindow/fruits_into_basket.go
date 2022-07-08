@@ -9,6 +9,9 @@ You will pick exactly one fruit from every tree until you cannot, i.e., you will
 input: Fruit=['A', 'B', 'C', 'A', 'C']
 output: 3
 Explanation: We can put 2 'C' in one basket and one 'A' in the other from the subarray ['C', 'A', 'C']
+
+complexity: O(n+n) equivalent to O(n)
+space: O(n) // only one map is used to store only alphabetical characters
 */
 func (slidingWindowChallenge) MaxFruitsIntoBasket(fruits []string) int {
 	res := 0
