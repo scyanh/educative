@@ -35,10 +35,3 @@ func (slidingWindowChallenge) LongestSubstringWithKDistinctCharacters(s string, 
 
 	return res // return result
 }
-
-func max(a int, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}

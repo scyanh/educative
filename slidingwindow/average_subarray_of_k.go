@@ -1,12 +1,5 @@
 package slidingwindow
 
-type slidingWindowChallenge struct {
-}
-
-func NewSlidingWindowChallenge() *slidingWindowChallenge {
-	return &slidingWindowChallenge{}
-}
-
 // FindAverageOfSubarrayOfSizeK finds average of subarray of size k
 /*
 Example 1:
