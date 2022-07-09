@@ -2,52 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/scyanh/educative/slidingwindow"
+	"github.com/scyanh/educative/twopointers"
 )
 
 func main() {
-	//arr := []int{1, 2, 3, 4, 5}
-	//arr := []int{7, 8, 9, 10, 11, 12, 13, 14, 0, 3, 5, 6}
+	arr := []int{2,5,9,11}
+	target := 11
 
-	//arr:=[]string{"abc", "bca", "cab", "cba", "xyz", "yzx"}
-
-	//str:="00110011"
-	//str:="clementisacap"
-	//input := []int{2, 3, 1, 2, 4, 3}
-	//input := []int{-3,4,3,-2,2,5}
-	//input := []int{2, 5, -7, 8, -6, 4, 1, -9}
-	//input := []int{4,3,-2,9,-4,2, 7}
-
-	//input := []int{4, 7, 5, 14, 10, 12, 19}
-	//input := []int{4, 7, 5, 14, 10, 12, 19}
-
-	/*input := []int{4, 3, -2, 9, -4, 2, 7}
-	k := 6 // 15*/
-
-	input := []int{8, -7, 8, 3}
-	k := 3 // 11
-
-	/*input := []int{30,0,-49,-45,39,-61,14,-3,20,-21,-1868,99,-99,98,-98,97,-97,96,-96,95,-95,94,-94,93,-93,92,-92,91,-91,90,-90,89,-89,88,-88,87,-87,86,-86,85,-85,84,-84,83,-83,82,-82,0,23,74,82,94,91,74,-28,93,75,49,46,70,-66,-34,17,34,19,-6,88,-75,83,39,10,-44,-98,-34,82,-65,-15,-92,92,8,37,-33,-50,-27,95,67,10,-99,-12,-86,20,57,30,-55,5,55,67,-37,-58,-81}
-	k := 59 // 852*/
-
-	/*input := []int{82,-82,0,23,74,82,94,91,74,-28,93,75,49,46,70,-66,-34,17,34,19,-6,88,-75,83,39,10,-44,-98}
-	fmt.Println(len(input))
-	k := 25 // 852*/
-
-	/*input := []int{82,-82,0,23,74,82,94,91,74,-28,93,75,49,46,70,-66,-34,17,34,19,-6,88,-75,83,39,10}
-	fmt.Println(len(input))
-	k := 25 // 852*/
-
-	/*input := []int{4,3,-2,9,-4,2,7}
-	k := 6 // 15*/
-
-
-
-	//input:=[]string{"A","B","C","A","C"}
-	//input:=[]string{"A", "B", "C", "B", "B", "C"}
-	//input := "aabccbbaab"
-
-	res := slidingwindow.NewSlidingWindowChallenge().MaxSubarrayWithMaxK(input, k)
+	res := twopointers.NewTwoPointers().PairWithTargetSum(arr, target)
 	fmt.Println("res=", res)
 
 }
