@@ -6,10 +6,10 @@ import (
 )
 
 func main() {
-	arr := []int{2,5,9,11}
-	target := 11
+	arr := []int{2, 3, 3, 3, 6, 9, 9}
+	//target := 11
 
-	res := twopointers.NewTwoPointers().PairWithTargetSum(arr, target)
+	res := twopointers.NewTwoPointers().RemoveDuplicates(arr)
 	fmt.Println("res=", res)
 
 }
