@@ -15,13 +15,8 @@ func main() {
 	head.Next.Next.Next=fastandslowpointers.NewFastAndSlowPointers().NewListNode(4)
 	head.Next.Next.Next.Next=fastandslowpointers.NewFastAndSlowPointers().NewListNode(5)
 	head.Next.Next.Next.Next.Next=fastandslowpointers.NewFastAndSlowPointers().NewListNode(6)
-
-
-	res := fastandslowpointers.NewFastAndSlowPointers().HasCycle(head)
-	fmt.Println("res=", res)
-
 	head.Next.Next.Next.Next.Next.Next=head.Next.Next
-	res2 := fastandslowpointers.NewFastAndSlowPointers().HasCycle(head)
-	fmt.Println("res2=", res2)
+	res := fastandslowpointers.NewFastAndSlowPointers().LengthOfCycle(head)
+	fmt.Println("res=", res)
 
 }
