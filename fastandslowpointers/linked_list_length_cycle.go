@@ -2,6 +2,8 @@ package fastandslowpointers
 
 // LengthOfCycle finds the length of the cycle
 // if there is no cycle, return 0
+// complexity: O(n)
+// space: O(1)
 func (fastAndSlowPointers) LengthOfCycle(head *ListNode) int {
 	if head == nil {
 		return 0
@@ -29,7 +31,7 @@ func calculateCycleLength(slow *ListNode) int {
 	for {
 		current = current.Next
 		length++
-		if current == slow{
+		if current == slow {
 			break
 		}
 	}

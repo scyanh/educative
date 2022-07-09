@@ -2,6 +2,8 @@ package fastandslowpointers
 
 // HasCycle determine if the LinkedList has a cycle
 // Return true if the LinkedList has a cycle, false otherwise
+// complexity: O(n)
+// space: O(1)
 func (fastAndSlowPointers) HasCycle(head *ListNode) bool {
 	if head == nil {
 		return false
