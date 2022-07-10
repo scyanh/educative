@@ -37,10 +37,3 @@ func (mergeIntervals) MergeAllOverlappingIntervals(intervals [][]int) [][]int {
 
 	return res
 }
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}

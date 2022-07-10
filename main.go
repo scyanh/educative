@@ -10,10 +10,12 @@ func main() {
 	//target := 11
 
 	arr:=[][]int{
-		{1,4},
-		{2,6},
-		{3,5},
+		{1,3},
+		{5,7},
+		{8,12},
 	}
-	res := mergeintervals.NewMergeIntervals().MergeAllOverlappingIntervals(arr)
+
+	newInterval:=[]int{4,6}
+	res := mergeintervals.NewMergeIntervals().InsertInterval(arr, newInterval)
 	fmt.Println("res=", res)
 }
