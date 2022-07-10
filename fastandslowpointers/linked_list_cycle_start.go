@@ -2,6 +2,8 @@ package fastandslowpointers
 
 // FindCycleStart N1->N2->N3->N4->N5->N6--->to N3
 // output = 3
+// complexity O(n)
+// time =(1)
 func (fastAndSlowPointers) FindCycleStart(head *ListNode) int {
 	fast := head
 	slow := head
