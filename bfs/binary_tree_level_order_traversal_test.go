@@ -1,21 +1,12 @@
-package main
+package bfs
 
 import (
-	"fmt"
-	"github.com/scyanh/educative/bfs"
+	"github.com/stretchr/testify/require"
+	"testing"
 )
 
-func main() {
-	//arr := []int{2, 3, 3, 3, 6, 9, 9}
-	//target := 11
-
-	/*arr:=[][]int{
-		{1,3},
-		{5,7},
-		{8,12},
-	}*/
-
-	tbfs := bfs.NewBFS()
+func TestBFS_LevelOrderTraversal(t *testing.T) {
+	tbfs := NewBFS()
 	root := tbfs.NewTreeNode(12)
 	root.Left = tbfs.NewTreeNode(7)
 	root.Right = tbfs.NewTreeNode(1)
@@ -24,5 +15,11 @@ func main() {
 	root.Right.Right = tbfs.NewTreeNode(5)
 
 	res := tbfs.LevelOrderTraversal(root)
-	fmt.Println("res=", res)
+	expected := [][]int{
+		{12},
+		{7, 1},
+		{9, 10, 5},
+	}
+
+	require.Equal(t, expected, res)
 }
