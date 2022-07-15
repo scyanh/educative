@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/scyanh/educative/bfs"
+	"github.com/scyanh/educative/subsets"
 )
 
 func main() {
 	//arr := []int{2, 3, 3, 3, 6, 9, 9}
+
 	//target := 11
 
 	/*arr:=[][]int{
@@ -15,14 +16,8 @@ func main() {
 		{8,12},
 	}*/
 
-	tbfs := bfs.NewBFS()
-	root := tbfs.NewTreeNode(12)
-	root.Left = tbfs.NewTreeNode(7)
-	root.Right = tbfs.NewTreeNode(1)
-	root.Left.Left = tbfs.NewTreeNode(9)
-	root.Right.Left = tbfs.NewTreeNode(10)
-	root.Right.Right = tbfs.NewTreeNode(5)
+	arr := []int{1, 2, 3}
+	res:= subsets.NewSubset().FindSubsets(arr)
 
-	res := tbfs.LevelOrderTraversal(root)
 	fmt.Println("res=", res)
 }
