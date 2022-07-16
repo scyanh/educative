@@ -16,8 +16,9 @@ func main() {
 		{8,12},
 	}*/
 
-	arr := []int{1, 2, 3}
-	res:= subsets.NewSubset().FindSubsets(arr)
+	//arr := []int{3, 1, 3}
+	arr := []int{1, 3, 3, 5}
+	res:= subsets.NewSubset().FindSubsetsWithoutDuplicates(arr)
 
 	fmt.Println("res=", res)
 }
