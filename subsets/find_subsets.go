@@ -9,10 +9,8 @@ func (subset) FindSubsets(arr []int) [][]int {
 		n := len(subsets)
 
 		for i := 0; i < n; i++ {
-			var set []int
-			set = append(set, subsets[i]...)
+			set := subsets[i]
 			set = append(set, el)
-
 			subsets = append(subsets, set)
 		}
 	}
