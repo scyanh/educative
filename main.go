@@ -17,8 +17,8 @@ func main() {
 	}*/
 
 	//arr := []int{3, 1, 3}
-	arr := []int{1, 3, 3, 5}
-	res:= subsets.NewSubset().FindSubsetsWithoutDuplicates(arr)
+	arr := []int{1, 3, 5}
+	res:= subsets.NewSubset().GeneratePermutations(arr)
 
 	fmt.Println("res=", res)
 }
