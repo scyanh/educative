@@ -6,5 +6,5 @@ import (
 
 func main() {
 	//arr := []int{2, 3, 3, 3, 6, 9, 9}
-	concurrency.NewGeneratorPattern().GenerateSomething()
+	concurrency.NewFanInFanOut().SimpleFanInFanOut()
 }
