@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
 type fanInFanOut struct {
 }
@@ -22,29 +25,41 @@ func (fanInFanOut) GenChan() <-chan int {
 	return c
 }
 
-func (fanInFanOut) FanIn(c1, c2 <-chan int) <-chan int {
-	cOut := make(chan int)
+func (fanInFanOut) FanIn(ch1, ch2 <-chan int) <-chan int {
+	ch := make(chan int)
+
+	var wg sync.WaitGroup
+	wg.Add(2)
 
 	go func() {
-		for el := range c1 {
-			cOut <- el
-		}
-	}()
-	go func() {
-		for el := range c2 {
-			cOut <- el
+		defer wg.Done()
+		for el := range ch1 {
+			ch <- el
 		}
 	}()
 
-	return cOut
+	go func() {
+		defer wg.Done()
+		for el := range ch2 {
+			ch <- el
+		}
+	}()
+
+	go func() {
+		wg.Wait()
+		close(ch)
+	}()
+
+	return ch
 }
 
 func (f fanInFanOut) SimpleFanInFanOut() {
 	fmt.Println("start SimpleFanInFanOut ...")
+
 	c := f.FanIn(f.GenChan(), f.GenChan())
 
-	for i := 0; i < 10; i++ {
-		fmt.Println(<-c)
+	for el := range c {
+		fmt.Println(el)
 	}
 
 	fmt.Println("... end SimpleFanInFanOut")
