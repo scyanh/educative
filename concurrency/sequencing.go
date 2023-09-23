@@ -1,4 +1,4 @@
-package concurrency
+package main
 
 import "fmt"
 
@@ -46,6 +46,7 @@ func (s sequencing) FanInFood(ch1, ch2 <-chan CookInfo) <-chan CookInfo {
 }
 
 func (s sequencing) SequenceFood() {
+	fmt.Println("start SequenceFood ...")
 
 	c := s.FanInFood(s.GeneratorFood(), s.GeneratorFood())
 
@@ -61,5 +62,5 @@ func (s sequencing) SequenceFood() {
 
 	}
 
-	fmt.Println("done")
+	fmt.Println("... end SequenceFood")
 }

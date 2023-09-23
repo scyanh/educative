@@ -1,4 +1,4 @@
-package concurrency
+package main
 
 import "fmt"
 
@@ -10,13 +10,14 @@ func NewForSelectLoop() forSelectLoop {
 }
 
 func (forSelectLoop) Fruits() {
-	defer fmt.Println("done")
+	fmt.Println("start Fruits ...")
+	defer fmt.Println("... end Fruits")
 	c := make(chan string)
 
-	go func(){
-		arr:=[]string{"a", "b", "c", "d"}
-		for _,el:=range arr{
-			c<-el
+	go func() {
+		arr := []string{"a", "b", "c", "d"}
+		for _, el := range arr {
+			c <- el
 		}
 	}()
 

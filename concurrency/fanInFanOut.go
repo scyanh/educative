@@ -1,4 +1,4 @@
-package concurrency
+package main
 
 import "fmt"
 
@@ -12,7 +12,7 @@ func NewFanInFanOut() fanInFanOut {
 func (fanInFanOut) GenChan() <-chan int {
 	c := make(chan int)
 
-	go func(){
+	go func() {
 		for i := 0; i < 5; i++ {
 			c <- i
 		}
@@ -26,12 +26,12 @@ func (fanInFanOut) FanIn(c1, c2 <-chan int) <-chan int {
 	cOut := make(chan int)
 
 	go func() {
-		for el:=range c1{
+		for el := range c1 {
 			cOut <- el
 		}
 	}()
 	go func() {
-		for el:=range c2{
+		for el := range c2 {
 			cOut <- el
 		}
 	}()
@@ -40,11 +40,12 @@ func (fanInFanOut) FanIn(c1, c2 <-chan int) <-chan int {
 }
 
 func (f fanInFanOut) SimpleFanInFanOut() {
+	fmt.Println("start SimpleFanInFanOut ...")
 	c := f.FanIn(f.GenChan(), f.GenChan())
 
-	for i:=0; i<10; i++{
+	for i := 0; i < 10; i++ {
 		fmt.Println(<-c)
 	}
 
-	fmt.Println("end")
+	fmt.Println("... end SimpleFanInFanOut")
 }

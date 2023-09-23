@@ -1,4 +1,4 @@
-package concurrency
+package main
 
 import "fmt"
 
@@ -22,12 +22,13 @@ func (g generatorPattern) foo() <-chan int {
 }
 
 func (g generatorPattern) GenerateSomething() {
+	fmt.Println("start GenerateSomething ...")
 	c := g.foo()
 
 	for el := range c {
 		fmt.Println(el)
 	}
 
-	fmt.Println("end")
+	fmt.Println("... end GenerateSomething")
 
 }

@@ -1,4 +1,4 @@
-package concurrency
+package main
 
 import "fmt"
 
@@ -16,7 +16,8 @@ func (quitChannel) DoRace(idx int, racer, quit chan int) {
 }
 
 func (q quitChannel) Racing() {
-	defer fmt.Println("done")
+	fmt.Println("start Racing ...")
+	defer fmt.Println("... end Racing")
 	c := make(chan int)
 	quit := make(chan int)
 

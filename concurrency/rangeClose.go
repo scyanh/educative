@@ -1,4 +1,4 @@
-package concurrency
+package main
 
 import "fmt"
 
@@ -22,6 +22,7 @@ func (rangeClose) GetMoney(c chan<- Money) {
 }
 
 func (r rangeClose) RangeCloseMoney() {
+	fmt.Println("start RangeCloseMoney ...")
 	c := make(chan Money)
 	go r.GetMoney(c)
 
@@ -29,5 +30,5 @@ func (r rangeClose) RangeCloseMoney() {
 		fmt.Println(fmt.Sprintf("%d %d", el.idx, el.amount))
 	}
 
-	fmt.Println("end")
+	fmt.Println("... end RangeCloseMoney")
 }
