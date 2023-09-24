@@ -11,6 +11,7 @@ func NewGeneratorPattern() generatorPattern {
 
 func (g generatorPattern) foo() <-chan int {
 	c := make(chan int)
+
 	go func() {
 		for i := 0; i < 5; i++ {
 			c <- i
@@ -23,6 +24,7 @@ func (g generatorPattern) foo() <-chan int {
 
 func (g generatorPattern) GenerateSomething() {
 	fmt.Println("start GenerateSomething ...")
+
 	c := g.foo()
 
 	for el := range c {

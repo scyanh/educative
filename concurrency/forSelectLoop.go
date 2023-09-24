@@ -28,7 +28,7 @@ func (forSelectLoop) Fruits() {
 		select {
 		case val := <-c:
 			fmt.Println(val)
-			
+
 			if val == "d" {
 				return
 			}

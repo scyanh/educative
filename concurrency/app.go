@@ -10,14 +10,14 @@ func main() {
 	//c := NewConcurrency()
 	//c.GetFibonacci(10)
 
-	fsl := NewForSelectLoop()
-	fsl.Fruits()
+	//fsl := NewForSelectLoop()
+	//fsl.Fruits()
 
 	//gp := NewGeneratorPattern()
 	//gp.GenerateSomething()
 
-	//qc := NewQuitChannel()
-	//qc.Racing()
+	qc := NewQuitChannel()
+	qc.Racing()
 
 	//rc := NewRangeClose()
 	//rc.RangeCloseMoney()
