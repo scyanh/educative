@@ -4,14 +4,14 @@ func main() {
 	//bc := NewBufferedChan()
 	//bc.SimpleBuffered()
 
-	fifo := NewFanInFanOut()
-	fifo.SimpleFanInFanOut()
+	//fifo := NewFanInFanOut()
+	//fifo.SimpleFanInFanOut()
 
 	//c := NewConcurrency()
 	//c.GetFibonacci(10)
 
-	//fsl := NewForSelectLoop()
-	//fsl.Fruits()
+	fsl := NewForSelectLoop()
+	fsl.Fruits()
 
 	//gp := NewGeneratorPattern()
 	//gp.GenerateSomething()

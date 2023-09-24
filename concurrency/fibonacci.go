@@ -18,7 +18,6 @@ func (concurrency) Fibonnaci(number int) chan int {
 			chanFibo <- i
 			i, j = i+j, i
 		}
-
 		close(chanFibo)
 	}()
 

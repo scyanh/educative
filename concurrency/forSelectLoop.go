@@ -12,22 +12,27 @@ func NewForSelectLoop() forSelectLoop {
 func (forSelectLoop) Fruits() {
 	fmt.Println("start Fruits ...")
 	defer fmt.Println("... end Fruits")
+
 	c := make(chan string)
 
+	ar := []string{"a", "b", "c", "d"}
+
 	go func() {
-		arr := []string{"a", "b", "c", "d"}
-		for _, el := range arr {
+		for _, el := range ar {
 			c <- el
 		}
+		close(c)
 	}()
 
 	for {
 		select {
-		case el := <-c:
-			fmt.Println(el)
-			if el == "d" {
+		case val := <-c:
+			fmt.Println(val)
+			
+			if val == "d" {
 				return
 			}
 		}
 	}
+
 }
