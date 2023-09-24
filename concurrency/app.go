@@ -16,8 +16,8 @@ func main() {
 	//gp := NewGeneratorPattern()
 	//gp.GenerateSomething()
 
-	qc := NewQuitChannel()
-	qc.Racing()
+	//qc := NewQuitChannel()
+	//qc.Racing()
 
 	//rc := NewRangeClose()
 	//rc.RangeCloseMoney()
@@ -25,7 +25,7 @@ func main() {
 	//sq := NewSequencing()
 	//sq.SequenceFood()
 
-	//ts := NewTimeoutSelect()
-	//ts.Dynamite()
+	ts := NewTimeoutSelect()
+	ts.Dynamite()
 
 }

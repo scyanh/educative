@@ -14,9 +14,12 @@ func NewRangeClose() rangeClose {
 	return rangeClose{}
 }
 
-func (rangeClose) GetMoney(c chan<- Money) {
+func (rangeClose) GenMoney(c chan Money) {
 	for i := 0; i < 3; i++ {
-		c <- Money{i, 500}
+		c <- Money{
+			idx:    i,
+			amount: 500,
+		}
 	}
 	close(c)
 }
@@ -24,10 +27,10 @@ func (rangeClose) GetMoney(c chan<- Money) {
 func (r rangeClose) RangeCloseMoney() {
 	fmt.Println("start RangeCloseMoney ...")
 	c := make(chan Money)
-	go r.GetMoney(c)
+	go r.GenMoney(c)
 
 	for el := range c {
-		fmt.Println(fmt.Sprintf("%d %d", el.idx, el.amount))
+		fmt.Printf("%d generate %d\n", el.idx, el.amount)
 	}
 
 	fmt.Println("... end RangeCloseMoney")

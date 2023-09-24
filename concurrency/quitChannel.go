@@ -16,14 +16,14 @@ func NewQuitChannel() quitChannel {
 
 func (q quitChannel) DoRace(idx int, racer, quit chan int) {
 	racer <- idx
-	// do something
+
 	rand.Seed(time.Now().UnixNano())
 	mini, maxi := 5, 20
 	r := rand.Intn(maxi - mini)
 	r += mini
-	time.Sleep(time.Duration(r) * time.Millisecond)
 
 	q.m[idx] = r
+	time.Sleep(time.Duration(r) * time.Millisecond)
 
 	quit <- idx
 }
@@ -32,21 +32,22 @@ func (q quitChannel) Racing() {
 	fmt.Println("start Racing ...")
 	defer fmt.Println("... end Racing")
 
-	c := make(chan int)
+	racer := make(chan int)
 	quit := make(chan int)
 	q.m = make(map[int]int)
 
 	for i := 0; i < 3; i++ {
-		go q.DoRace(i, c, quit)
+		go q.DoRace(i, racer, quit)
 	}
 
 	for {
 		select {
-		case racer := <-c:
-			fmt.Println(racer)
-		case finished := <-quit:
-			fmt.Printf("quit by %d in %d milliseconds", finished, q.m[finished])
+		case r := <-racer:
+			fmt.Println(r)
+		case finish := <-quit:
+			fmt.Printf("quit by %d took %d milliseconds", finish, q.m[finish])
 			return
 		}
 	}
+
 }
