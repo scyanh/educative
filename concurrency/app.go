@@ -1,8 +1,9 @@
 package main
 
 func main() {
-	//bc := NewBufferedChan()
-	//bc.SimpleBuffered()
+	bc := NewBufferedChan()
+	bc.SimpleBuffered()
+	bc.SimpleBuffered2()
 
 	//fifo := NewFanInFanOut()
 	//fifo.SimpleFanInFanOut()
@@ -25,7 +26,7 @@ func main() {
 	//sq := NewSequencing()
 	//sq.SequenceFood()
 
-	ts := NewTimeoutSelect()
-	ts.Dynamite()
+	//ts := NewTimeoutSelect()
+	//ts.Dynamite()
 
 }
