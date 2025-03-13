@@ -4,14 +4,23 @@ import (
 	"errors"
 )
 
-type listChallenge struct {
+type ListChallenge struct {
 }
 
-func NewListChallenge() listChallenge {
-	return listChallenge{}
+type IListChallenge interface {
+	RemoveEven(arr []int) []int
+	MergeTwoSortedList(arr1, arr2 []int) []int
+	TwoSum(arr []int, k int) (int, int, error)
+	TwoSum2(arr []int, k int) ([]int, error)
 }
 
-func (listChallenge) RemoveEven(arr []int) []int {
+func NewListChallenge() IListChallenge {
+	return ListChallenge{}
+}
+
+// arr := []int{1, 2, 3, 4, 5}
+// [1 3 5]
+func (ListChallenge) RemoveEven(arr []int) []int {
 	res := make([]int, 0)
 	for _, el := range arr {
 		if el%2 != 0 {
@@ -22,7 +31,10 @@ func (listChallenge) RemoveEven(arr []int) []int {
 	return res
 }
 
-func (listChallenge) MergeTwoSortedList(arr1, arr2 []int) []int {
+// arr := []int{1, 2, 3, 4, 5}
+// arr2 := []int{1, 2, 6, 7}
+// [1 1 2 2 3 4 5 6 7]
+func (ListChallenge) MergeTwoSortedList(arr1, arr2 []int) []int {
 	res := make([]int, 0)
 
 	idx1, idx2 := 0, 0
@@ -41,9 +53,8 @@ func (listChallenge) MergeTwoSortedList(arr1, arr2 []int) []int {
 	return res
 }
 
-// AddTwoNumbersAddToK In this problem, you have to implement the find_sum(lst,k) function
-// which will take a number k as input and return two numbers that add up to k.
-func (listChallenge) AddTwoNumbersAddToK(arr []int, k int) (int, int, error) {
+// encontrar dos números en arr cuya suma sea k
+func (ListChallenge) TwoSum(arr []int, k int) (int, int, error) {
 	memo := make(map[int]bool)
 
 	for _, el := range arr {
@@ -55,6 +66,22 @@ func (listChallenge) AddTwoNumbersAddToK(arr []int, k int) (int, int, error) {
 	}
 
 	return 0, 0, errors.New("not found")
+}
+
+func (ListChallenge) TwoSum2(arr []int, k int) ([]int, error) {
+	dict := make(map[int]int)
+
+	for i := 0; i < len(arr); i++ {
+		diff := k - arr[i]
+		if _, ok := dict[diff]; ok {
+			return []int{arr[i], diff}, nil
+		} else {
+			dict[arr[i]] = i
+		}
+	}
+
+	return []int{}, nil
+
 }
 
 // FindProductAllElements List of Products of all Elements
@@ -69,7 +96,7 @@ output = [24,12,8,6]
 Sample Input [0, 1, 2, 3]
 output [6, 0, 0, 0]
 */
-func (listChallenge) FindProductAllElements(arr []int) []int {
+func (ListChallenge) FindProductAllElements(arr []int) []int {
 	res := make([]int, len(arr))
 
 	// get product start from left
@@ -89,8 +116,8 @@ func (listChallenge) FindProductAllElements(arr []int) []int {
 	return res
 }
 
-//FindMinimum finds the smallest number in the given list.
-func (listChallenge) FindMinimum(arr []int) int {
+// FindMinimum finds the smallest number in the given list.
+func (ListChallenge) FindMinimum(arr []int) int {
 	min := arr[0]
 	for _, el := range arr {
 		if el < min {
@@ -102,7 +129,7 @@ func (listChallenge) FindMinimum(arr []int) int {
 }
 
 // FindSecondMaximum returns the second largest element in the list.
-func (listChallenge) FindSecondMaximum(arr []int) int {
+func (ListChallenge) FindSecondMaximum(arr []int) int {
 	max := arr[0]
 	secondMax := arr[0]
 
@@ -123,12 +150,22 @@ func (listChallenge) FindSecondMaximum(arr []int) int {
 Sample Input [1,2,3,4] k=1
 output = [4,1,2,3]
 */
-func (listChallenge) RotateToRightK(arr []int, k int) []int {
+func (ListChallenge) RotateToRightK(arr []int, k int) []int {
 	for i := 0; i < k; i++ {
 		arr = append(arr[len(arr)-1:], arr[:len(arr)-1]...)
 	}
 
 	return arr
+}
+func (ListChallenge) RotateToRightK2(arr []int, k int) [5]int {
+	var arr2 [5]int
+
+	for i := range arr {
+		pos := (i + k) % len(arr)
+		arr2[pos] = arr[i]
+	}
+
+	return arr2
 }
 
 // RotateToLeftK rotate to left a list by k elements
@@ -136,12 +173,22 @@ func (listChallenge) RotateToRightK(arr []int, k int) []int {
 Sample Input [1,2,3,4] k=1
 output = [2,3,4,1]
 */
-func (listChallenge) RotateToLeftK(arr []int, k int) []int {
+func (ListChallenge) RotateToLeftK(arr []int, k int) []int {
 	for i := 0; i < k; i++ {
 		arr = append(arr[1:], arr[0])
 	}
 
 	return arr
+}
+func (ListChallenge) RotateToLeftK2(arr []int, k int) [5]int {
+	var arr2 [5]int
+	k = k % len(arr)
+
+	for i := range arr {
+		pos := (i - k + len(arr)) % len(arr)
+		arr2[pos] = arr[i]
+	}
+	return arr2
 }
 
 // RearrangeArray takes an array and put the negative elements in the back and positive elements in the front
@@ -149,7 +196,7 @@ func (listChallenge) RotateToLeftK(arr []int, k int) []int {
 Sample Input [1,-2,3,4]
 output = [-2,4,1,3]
 */
-func (listChallenge) RearrangeArray(arr []int) []int {
+func (ListChallenge) RearrangeArray(arr []int) []int {
 	res := make([]int, 0)
 	for _, el := range arr {
 		if el >= 0 {
@@ -168,7 +215,7 @@ func (listChallenge) RearrangeArray(arr []int) []int {
 Sample Input [1,2,3,4,5]
 output = [5,1,4,2,3]
 */
-func (listChallenge) ArrangeMaxMinElements(arr []int) []int {
+func (ListChallenge) ArrangeMaxMinElements(arr []int) []int {
 	if len(arr) == 0 {
 		return arr
 	}
@@ -195,7 +242,7 @@ func (listChallenge) ArrangeMaxMinElements(arr []int) []int {
 Sample Input [-2,10,7,-5, 15,6]
 output =  [10 7 -5 15 6] 33
 */
-func (listChallenge) FindMaxSumSublist(arr []int) ([]int, int) {
+func (ListChallenge) FindMaxSumSublist(arr []int) ([]int, int) {
 	maxSum := arr[0]
 	currSum := arr[0]
 
