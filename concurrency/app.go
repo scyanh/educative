@@ -1,12 +1,13 @@
 package main
 
 func main() {
-	bc := NewBufferedChan()
-	bc.SimpleBuffered()
-	bc.SimpleBuffered2()
+	//bc := NewBufferedChan()
+	//bc.SimpleBuffered()
+	//bc.SimpleBuffered2()
 
-	//fifo := NewFanInFanOut()
-	//fifo.SimpleFanInFanOut()
+	fifo := NewFanInFanOut()
+	fifo.SimpleFanInFanOut()
+	fifo.SimpleFanInFanOut2()
 
 	//c := NewConcurrency()
 	//c.GetFibonacci(10)
