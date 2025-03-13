@@ -12,6 +12,18 @@ type IListChallenge interface {
 	MergeTwoSortedList(arr1, arr2 []int) []int
 	TwoSum(arr []int, k int) (int, int, error)
 	TwoSum2(arr []int, k int) ([]int, error)
+	FindProductAllElements(arr []int) []int
+	FindProductAllElements2(arr []int) []int
+	FindMinimum(arr []int) int
+	FindMinimum2(arr []int) int
+	FindSecondMaximum(arr []int) int
+	FindSecondMaximum2(arr []int) int
+	RearrangeArray(arr []int) []int
+	RearrangeArray2(arr []int) []int
+	ArrangeMaxMinElements(arr []int) []int
+	ArrangeMaxMinElements2(arr []int) []int
+	FindMaxSumSublist(arr []int) ([]int, int)
+	FindMaxSumSublist2(arr []int) ([]int, int)
 }
 
 func NewListChallenge() IListChallenge {
@@ -54,6 +66,9 @@ func (ListChallenge) MergeTwoSortedList(arr1, arr2 []int) []int {
 }
 
 // encontrar dos números en arr cuya suma sea k
+// arr := []int{1, 2, 3, 4, 5}
+// k := 5
+// output [2, 3]
 func (ListChallenge) TwoSum(arr []int, k int) (int, int, error) {
 	memo := make(map[int]bool)
 
@@ -67,7 +82,6 @@ func (ListChallenge) TwoSum(arr []int, k int) (int, int, error) {
 
 	return 0, 0, errors.New("not found")
 }
-
 func (ListChallenge) TwoSum2(arr []int, k int) ([]int, error) {
 	dict := make(map[int]int)
 
@@ -115,8 +129,26 @@ func (ListChallenge) FindProductAllElements(arr []int) []int {
 
 	return res
 }
+func (ListChallenge) FindProductAllElements2(arr []int) []int {
+	left := 1
+	res := make([]int, len(arr))
+	for i := 0; i < len(arr); i++ {
+		res[i] = left
+		left *= arr[i]
+	}
+
+	right := 1
+	for i := len(arr) - 1; i >= 0; i-- {
+		res[i] *= right
+		right *= arr[i]
+	}
+
+	return res
+}
 
 // FindMinimum finds the smallest number in the given list.
+// Sample Input [5, 2, 3]
+// output 2
 func (ListChallenge) FindMinimum(arr []int) int {
 	min := arr[0]
 	for _, el := range arr {
@@ -127,8 +159,20 @@ func (ListChallenge) FindMinimum(arr []int) int {
 
 	return min
 }
+func (ListChallenge) FindMinimum2(arr []int) int {
+	min := arr[0]
+	for _, val := range arr {
+		if val < min {
+			min = val
+		}
+	}
+
+	return min
+}
 
 // FindSecondMaximum returns the second largest element in the list.
+// input [1, 2, 3, 4]
+// output 3
 func (ListChallenge) FindSecondMaximum(arr []int) int {
 	max := arr[0]
 	secondMax := arr[0]
@@ -142,6 +186,20 @@ func (ListChallenge) FindSecondMaximum(arr []int) int {
 		}
 	}
 
+	return secondMax
+}
+func (ListChallenge) FindSecondMaximum2(arr []int) int {
+	max := arr[0]
+	secondMax := arr[0]
+
+	for _, val := range arr {
+		if val > max {
+			secondMax = max
+			max = val
+		} else if val > secondMax {
+			secondMax = val
+		}
+	}
 	return secondMax
 }
 
@@ -208,6 +266,19 @@ func (ListChallenge) RearrangeArray(arr []int) []int {
 
 	return res
 }
+func (ListChallenge) RearrangeArray2(arr []int) []int {
+	var res []int
+
+	for _, val := range arr {
+		if val > 0 {
+			res = append(res, val)
+		} else {
+			res = append([]int{val}, res...)
+		}
+	}
+
+	return res
+}
 
 // ArrangeMaxMinElements arrange elements in such a way that the maximum element appears at first position,
 //then minimum at second, then second maximum at third and second minimum at fourth and so on.
@@ -232,6 +303,21 @@ func (ListChallenge) ArrangeMaxMinElements(arr []int) []int {
 
 		res = append(res, arr[minIdx])
 		minIdx++
+	}
+
+	return res
+}
+func (ListChallenge) ArrangeMaxMinElements2(arr []int) []int {
+	var res []int
+
+	for i := 0; i < len(arr); i++ {
+		res = append(res, arr[len(arr)-i-1])
+
+		if len(res) == len(arr) {
+			break
+		}
+
+		res = append(res, arr[i])
 	}
 
 	return res
@@ -264,4 +350,31 @@ func (ListChallenge) FindMaxSumSublist(arr []int) ([]int, int) {
 	}
 
 	return maxSublist, maxSum
+}
+
+func (ListChallenge) FindMaxSumSublist2(arr []int) ([]int, int) {
+	var res []int
+	var maxGeneralSum int
+	var maxCurrentSum int
+
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+
+	for i, _ := range arr {
+		maxCurrentSum += arr[i]
+		if maxCurrentSum > arr[i] {
+			res = append(res, arr[i])
+		} else {
+			maxCurrentSum = arr[i]
+			res = []int{arr[i]}
+		}
+
+		maxGeneralSum = max(maxGeneralSum, maxCurrentSum)
+	}
+
+	return res, maxGeneralSum
 }
