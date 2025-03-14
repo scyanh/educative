@@ -33,8 +33,38 @@ func (timeoutSelect) Dynamite() {
 				return
 			}
 			fmt.Println(val)
-		case <-time.After(12 * time.Microsecond):
+		case <-time.After(120 * time.Microsecond):
 			fmt.Println("time out")
+			return
+		}
+	}
+
+}
+
+func (timeoutSelect) Dynamite2() {
+	fmt.Println("start")
+	defer fmt.Println("end")
+
+	c := make(chan int)
+
+	go func() {
+		for i := 0; i < 100; i++ {
+			c <- i
+		}
+		close(c)
+	}()
+
+	for {
+		select {
+		case val, ok := <-c:
+			if ok {
+				fmt.Println(val)
+			} else {
+				fmt.Println("c closed")
+				return
+			}
+
+		case <-time.After(1000 * time.Microsecond):
 			return
 		}
 	}

@@ -9,8 +9,8 @@ func main() {
 	//fifo.SimpleFanInFanOut()
 	//fifo.SimpleFanInFanOut2()
 
-	c := NewConcurrency()
-	c.GetFibonacci(10)
+	//c := NewConcurrency()
+	//c.GetFibonacci(10)
 
 	//fsl := NewForSelectLoop()
 	//fsl.Fruits()
@@ -27,7 +27,8 @@ func main() {
 	//sq := NewSequencing()
 	//sq.SequenceFood()
 
-	//ts := NewTimeoutSelect()
+	ts := NewTimeoutSelect()
 	//ts.Dynamite()
+	ts.Dynamite2()
 
 }
