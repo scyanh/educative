@@ -24,6 +24,21 @@ func (concurrency) Fibonnaci(number int) chan int {
 	return chanFibo
 }
 
+func (concurrency) Fibonnaci2(number int) chan int {
+	c := make(chan int)
+
+	k := 0
+	go func() {
+		for i, j := 0, 1; k < number; k++ {
+			c <- i
+			i, j = i+j, i
+		}
+		close(c)
+	}()
+
+	return c
+}
+
 func (c concurrency) GetFibonacci(k int) {
 	fmt.Println("start GetFibonacci ...")
 	for el := range c.Fibonnaci(k) {

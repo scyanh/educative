@@ -5,12 +5,12 @@ func main() {
 	//bc.SimpleBuffered()
 	//bc.SimpleBuffered2()
 
-	fifo := NewFanInFanOut()
-	fifo.SimpleFanInFanOut()
-	fifo.SimpleFanInFanOut2()
+	//fifo := NewFanInFanOut()
+	//fifo.SimpleFanInFanOut()
+	//fifo.SimpleFanInFanOut2()
 
-	//c := NewConcurrency()
-	//c.GetFibonacci(10)
+	c := NewConcurrency()
+	c.GetFibonacci(10)
 
 	//fsl := NewForSelectLoop()
 	//fsl.Fruits()
